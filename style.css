@@ -20,7 +20,8 @@ body {
 }
 
 .container {
-    position: relative;
+    /* position: relative; */
+    margin: auto;
     max-width: 400px;
     width: 100%;
     border-radius: 12px;
@@ -30,18 +31,30 @@ body {
 }
 
 #display {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     width: 98%;
     margin: auto;
-    height: 50px;
-    border: 1px solid lightgray;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 15px;
+    min-height: 50px;
+    border: none;
     border-radius: 15px;
     font-weight: bolder;
+    background: transparent;
+    color: #fff;
+    font-size: 20px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btns {
         display: grid;
         grid-gap: 10px;
         grid-template-columns: repeat(4, 1fr);
+        margin: 10px;
+        padding: 5px 15px 2px 15px;
 
 }
 
@@ -56,6 +69,11 @@ body {
     font-size: 20px;
     color: #fff;
     cursor: pointer;
-    margin: 10px;
+    /* margin: 10px; */
 
+}
+
+.btn-equal {
+    grid-column: span 2 ;
+    width: 100%;
 }
