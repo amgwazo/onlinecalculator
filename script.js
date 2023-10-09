@@ -29,11 +29,10 @@ function clearHistory(){
     history = [];
 }
 
+//Delete last entered digit
 function backSpace() {
     input.textContent = input.textContent.slice(0, -1);
 }
-
-
 
 // Function to perform calculations
 function calculate() {
@@ -44,29 +43,38 @@ function calculate() {
     // console.log(history);
     clearInput();
     input.textContent = result;
+    // input.textContent = new Intl.NumberFormat().format(result); //attempted to format the result but got undesired results on the next calculation
     // updateDetails("=" + result);
     
-    updateDetails(history.join("; "));
+    updateDetails(history.join(";   "));
   } catch (error) {
     input.textContent = "Error";
   }
 }
 
+// // Event listeners for buttons
+// buttons.forEach((button) => {
+//   button.addEventListener("click", () => {
+//     let value = button.textContent;
+
+//     if (value === "C") {
+//       clearInput();
+//       clearDetails();
+//       clearHistory();
+//     } else if (value === "=") {
+//       calculate();
+//     } else {
+//       updateInput(value);
+//       updateDetails(value);
+//     }
+//   });
+// });
+
 // Event listeners for buttons
 buttons.forEach((button) => {
-  button.addEventListener("click", () => {
+  button.addEventListener('click', () => {
     let value = button.textContent;
-
-    if (value === "C") {
-      clearInput();
-      clearDetails();
-      clearHistory();
-    } else if (value === "=") {
-      calculate();
-    } else {
-      updateInput(value);
-      updateDetails(value);
-    }
+    handleInput(value);
   });
 });
 
@@ -82,16 +90,18 @@ buttons.forEach((button) => {
 document.addEventListener('keydown', (event) => {
   const key = event.key;
   
-//   if (key === 'Enter') {
-//     calculate();
-//   } else 
-  
-  if(key === '=') {
+   if (key === 'Enter') {
+        if (input.textContent === "") {
+          return;
+        }
+     calculate();
+   } else if(key === '=') {
+    if(input.textContent === ''){
+      return;
+    }
    calculate();
 
-  }
-  
-   else if (key === 'Backspace') {
+  }else if (key === 'Backspace') {
     backSpace();
   } else if (!isNaN(key) || key === '.' || ['+', '-', '*', '/', '%'].includes(key)) {
     handleInput(key);
@@ -103,7 +113,14 @@ function handleInput(value) {
   if (value === 'C') {
     clearInput();
     clearDetails();
-  } else if (value === '=') {
+    clearHistory();
+    
+  }   else if (value === 'DEL') {
+    backSpace();
+  }else if (value === '=') {
+        if (input.textContent === "") {
+          return;
+        }
     calculate();
   } else {
     updateInput(value);
