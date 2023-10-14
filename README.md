@@ -18,4 +18,6 @@ This App has been designed as part of my requirements for the completion of the 
 #### ToDo: 
 
 * Implement number formatting so that the calculation results are displayed with correct decimal formatting
+* PRODUCTION ENVIRONMENT ONLY BUG FIXING - Pressing the Enter key in Production Environment does not always produce desired results, sometimes it clears data instead of performing the required calculations. It's been difficult to fix this Bug as I can not reproduce it in my Development Environment. I'm yet to finish troubleshooting this bug. 
+    * The Equals Key and Button are working perfectly and users are encouraged to use these instead.
 

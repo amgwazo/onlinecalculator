@@ -39,7 +39,8 @@ function calculate() {
   try {
     let expression = input.textContent;
     let result = eval(expression);
-    history.push(expression + "=" + result);
+    // let historyResult = new Intl.NumberFormat().format(result);
+    history.push(expression + "=" + new Intl.NumberFormat().format(result));
     // console.log(history);
     clearInput();
     input.textContent = result;
